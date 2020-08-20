@@ -229,6 +229,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 cnoreabbrev nt NERDTreeToggle
 cnoreabbrev ntf NERDTreeFind
+"" close vim automatically when the only window left open is a NERDTreopen is a NERDTreee
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
