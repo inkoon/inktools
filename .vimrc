@@ -376,10 +376,10 @@ noremap <leader>q :bp\|bd #<CR>
 nnoremap <silent> <leader><space> :noh<cr>
 
 "" Switching windows
-noremap <leader>; <C-w>h
-noremap <leader>/ <C-w>j
-noremap <leader>[ <C-w>k
-noremap <leader>' <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 "" Resizing windows
 noremap <C-w>[ 5<C-w><
