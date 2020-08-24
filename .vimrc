@@ -376,10 +376,10 @@ noremap <leader>q :bp\|bd #<CR>
 nnoremap <silent> <leader><space> :noh<cr>
 
 "" Switching windows
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+noremap <leader>; <C-w>h
+noremap <leader>/ <C-w>j
+noremap <leader>[ <C-w>k
+noremap <leader>' <C-w>l
 
 "" Resizing windows
 noremap <C-w>[ 5<C-w><
@@ -426,6 +426,8 @@ let g:jedi#show_call_signatures = "1"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 1
 let g:jedi#popup_select_first = 1
+" let g:jedi#use_splits_not_buffers = "right"
+" let g:jedi#use_tabs_not_buffers = 1
 
 " Syntax highlight
 " Default highlight is better than polyglot
