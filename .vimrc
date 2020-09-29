@@ -523,7 +523,9 @@ cnoreabbrev goyo Goyo
 " highlight! link Conceal CursorLineNr
 
 "requires jq install
-cnoreabbrev json %!jq .
+"cnoreabbrev json %!jq .
+
+nmap <leader>j :%!python -m json.tool<CR>
 
 cnoreabbrev fd filetype detect <CR>
 
