@@ -11,6 +11,7 @@ let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "python"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
+let g:polyglot_disabled = ['python']
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -431,7 +432,6 @@ let g:jedi#popup_select_first = 1
 
 " Syntax highlight
 " Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
 
 " supertab
