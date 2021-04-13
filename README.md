@@ -1,6 +1,1 @@
-# inkvim
-for control vim version
-
-### TODO
-gonna add redirection...
-or bash, conda...
+# inktools 🖋
