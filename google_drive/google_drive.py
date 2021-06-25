@@ -2,8 +2,10 @@ import os
 import tarfile
 
 from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
 from httplib2 import Http
 from oauth2client import client, file, tools
+from tqdm import tqdm
 
 SCOPES = "https://www.googleapis.com/auth/drive.file"
 AUTH = "authentication"
@@ -13,7 +15,7 @@ ZIP_EXTENSION = ".tar.gz"
 
 class GoogleDriveObject:
     # google drive id
-    klue_electra = "1WXh7zRmt1j-nz3e4anbTPdXU8A5eTGxj"
+    corpus = "1Y-5E0HkQrLPRRXx29VQBfH3hniPfX8KL"
 
 
 class GoogleDriveClient:
@@ -57,9 +59,16 @@ class GoogleDriveClient:
         # TODO: check overlap
 
         metadata = {"name": file_name, "parents": [target_dir_id], "mimeType": None}
-        res = self.client.files().create(body=metadata, media_body=file_path).execute()
-        if res:
-            print(f"Uploaded \"{file_name}\" ({res['mimeType']})")
+        media = MediaFileUpload(file_path, mimetype=None, resumable=True)
+
+        request = self.client.files().create(body=metadata, media_body=media)
+        res = None
+        with tqdm(total=100, desc="Uploaded", leave=False) as pbar:
+            while res is None:
+                status, res = request.next_chunk()
+                if status:
+                    pbar.update()
+        print(f"Upload Complete! \"{file_name}\" ({res['mimeType']})")
 
         if remove_tar:
             os.remove(file_path)
